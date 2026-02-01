@@ -1,0 +1,17 @@
+{
+    "file_types": {
+        "HTML-Jinja": ["html"],
+    },
+    "languages": {
+        "HTML-Jinja": {
+            "tab_size": 4,
+            "format_on_save": "on",
+            "auto_indent_on_paste": false,
+            "auto_indent": false,
+            "enable_language_server": true,
+            "prettier": {
+                "allowed": false,
+            },
+        },
+    },
+}

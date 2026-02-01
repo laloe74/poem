@@ -1,0 +1,288 @@
+/* ==================== */
+/* 主题变量             */
+/* ==================== */
+
+:root {
+    --bg: #fafffc;
+    --text: #141414;
+    --text-muted: #666;
+    --text-light: #818181;
+    --code-bg: #eee;
+    --border: #ddd;
+    --link: #0066cc;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #1f2524;
+        --text: #d3d5d6;
+        --text-muted: #999;
+        --text-light: #888;
+        --code-bg: #2a2a2a;
+        --border: #333;
+        --link: #6ab0f3;
+    }
+}
+
+/* ==================== */
+/* 基础样式             */
+/* ==================== */
+
+body {
+    font:
+        16px/1.5 "Chivo",
+        ui-sans-serif,
+        system-ui,
+        sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    hyphens: auto;
+    padding: 2rem;
+    max-width: 70ch;
+    margin: 0 auto;
+    background: var(--bg);
+    color: var(--text);
+}
+
+footer {
+    margin-top: 12rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+footer a,
+footer a:visited {
+    color: var(--text-muted);
+}
+
+a,
+a:visited {
+    color: var(--text);
+}
+
+img {
+    max-width: 100%;
+}
+
+hr {
+    margin-top: 6rem;
+    border: none;
+    border-top: 1px solid var(--border);
+}
+
+blockquote {
+    margin: 1em 0;
+    padding: 0 2em;
+    border-left: 3px solid var(--border);
+}
+
+/* ==================== */
+/* 标题                 */
+/* ==================== */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-size: inherit;
+    font-weight: inherit;
+    text-decoration: underline;
+
+    &:hover .zola-anchor {
+        visibility: visible !important;
+    }
+}
+
+header h1 {
+    display: inline;
+}
+
+h3 {
+    margin-top: 6rem;
+}
+
+h3:first-of-type {
+    margin-top: 1rem;
+}
+
+h4 {
+    margin-top: 3rem;
+    text-decoration: none;
+}
+
+.zola-anchor {
+    visibility: hidden;
+    margin-left: 0.75em;
+    border: none;
+    text-decoration: none;
+
+    &::after {
+        content: "#";
+        display: inline-block;
+    }
+}
+
+/* ==================== */
+/* 代码                 */
+/* ==================== */
+
+pre,
+code {
+    font-size: inherit;
+    background: var(--code-bg);
+}
+
+pre {
+    margin-bottom: 2rem;
+}
+
+pre code {
+    display: block;
+    padding: 1em;
+    background: none;
+    border: none;
+    overflow-x: auto;
+}
+
+/* ==================== */
+/* 列表                 */
+/* ==================== */
+
+ul,
+ol {
+    padding: 0;
+}
+
+.home ul li {
+    list-style-type: none;
+    display: flex;
+    font-variant-numeric: tabular-nums;
+}
+
+.section ul li a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+time {
+    padding-right: 1rem;
+}
+
+/* ==================== */
+/* 脚注                 */
+/* ==================== */
+
+/* 正文中的上标引用 */
+sup.footnote-reference {
+    font-size: 0.75em;
+    vertical-align: super;
+    line-height: 0;
+
+    a {
+        color: var(--link);
+        text-decoration: none;
+        padding: 0 0.2em;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+/* 脚注区域分隔线 */
+.footnote-definition:first-of-type {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+/* 单条脚注 */
+.footnote-definition {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* 脚注编号 */
+.footnote-definition-label {
+    font-size: 0.8em;
+    min-width: 1.5em;
+
+    &::after {
+        content: ".";
+    }
+}
+
+/* 脚注内容 */
+.footnote-definition p {
+    display: inline;
+    margin: 0;
+}
+
+/* 返回链接 */
+.footnote-definition a.footnote-backref {
+    color: var(--link);
+    text-decoration: none;
+    margin-left: 0.3em;
+    font-size: 0.85em;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/* ==================== */
+/* 文章排版             */
+/* ==================== */
+
+article h3:has(+ p) {
+    margin-bottom: 0;
+}
+
+article h3 + p {
+    margin-top: 0.2rem;
+}
+
+article h3 + p + p {
+    margin-top: 2rem;
+}
+
+article p:has(+ ol) {
+    margin-bottom: 0;
+}
+
+article p + ol {
+    margin-top: 0;
+}
+
+article ol:has(+ p) {
+    margin-bottom: 0;
+}
+
+article ol + p {
+    margin-top: 0;
+}
+
+/* ==================== */
+/* 布局组件             */
+/* ==================== */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    margin-bottom: 6em;
+}
+
+.error {
+    margin: 0;
+    color: var(--text-light);
+}
