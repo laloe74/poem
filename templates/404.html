@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}404{% endblock title %}
+
+{% block content %}
+<br>
+<div class="wrapper">
+    <p class="error">404 Not Found</p>
+    <a href="{{ get_url(path='/') }}">« back to home »</a>
+</div>
+{% endblock content %}
