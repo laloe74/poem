@@ -3,7 +3,7 @@
 /* ==================== */
 
 :root {
-    --bg: #fafffc;
+    --bg: #f4f7f3;
     --text: #141414;
     --text-muted: #666;
     --text-light: #818181;
@@ -12,9 +12,10 @@
     --link: #0066cc;
 }
 
+
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #1f2524;
+        --bg: #141713;
         --text: #d3d5d6;
         --text-muted: #999;
         --text-light: #888;
