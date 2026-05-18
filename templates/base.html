@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    {% if page.title %}<span class="progress">0%</span>{% endif %}
+    {% if page.title %}<span class="progress hidden">%</span>{% endif %}
     <main>
         <header>
             <h1><a href="/">{% if section.title %}{{ section.title }}{% else %}{{ page.title }}{% endif %}</a></h1>
@@ -20,12 +20,7 @@
     </main>
     {% if page.title %}
     <script>
-        const p = document.querySelector('.progress');
-        window.addEventListener('scroll', () => {
-            const h = document.documentElement;
-            const total = h.scrollHeight - h.clientHeight;
-            p.textContent = total ? Math.max(0, Math.round(h.scrollTop / total * 100)) + '%' : '0%';
-        });
+        let p=document.querySelector('.progress'),u=()=>{let h=document.documentElement,d=h.scrollHeight-h.clientHeight;p.textContent=p.classList.contains('hidden')?'%':d?Math.max(0,Math.round(h.scrollTop/d*100))+'%':'0%'};p.onclick=()=>{p.classList.toggle('hidden');u()};onscroll=u
     </script>
     {% endif %}
 </body>

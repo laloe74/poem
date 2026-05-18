@@ -1,7 +1,24 @@
 :root {
+    --font-primary: Inter, system-ui, sans-serif;
+    --font-mono: ui-monospace, Menlo, Consolas, monospace;
+
     --text-primary: rgba(0, 0, 0, 0.9);
     --text-secondary: rgba(0, 0, 0, 0.6);
     --bg-primary: rgba(255, 255, 255, 1);
+    --bg-secondary: rgba(248, 248, 248, 1);
+    --border: rgba(0, 0, 0, 0.1);
+
+    --font-size-small: 12px;
+    --font-size-regular: 14px;
+    --font-size-large: 24px;
+
+    --radius-large: 12px;
+    --radius-regular: 8px;
+    --radius-small: 4px;
+
+    --spacer-small: 2vh;
+    --spacer-medium: 6vh;
+    --spacer-large: 12vh;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -9,19 +26,19 @@
         --text-primary: rgba(255, 255, 255, 0.9);
         --text-secondary: rgba(255, 255, 255, 0.6);
         --bg-primary: rgba(0, 0, 0, 1);
+        --bg-secondary: rgba(7, 7, 7, 1);
+        --border: rgba(255, 255, 255, 0.1);
     }
 }
 
 * {
-    font-size: 14px;
+    font-size: var(--font-size-regular);
     line-height: 1.6em;
     box-sizing: border-box;
 }
 
 body {
-    font-family:
-        -apple-system, BlinkMacSystemFont, "avenir next", avenir, helvetica,
-        "helvetica neue", ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+    font-family: var(--font-primary);
     padding: 2rem;
     color: var(--text-secondary);
     background: var(--bg-primary);
@@ -31,7 +48,7 @@ body {
 
 main {
     max-width: 70ch;
-    margin-bottom: 4rem;
+    margin-bottom: var(--spacer-medium);
 }
 
 .progress {
@@ -39,17 +56,21 @@ main {
     top: 1.5rem;
     right: 1.5rem;
     font-variant-numeric: tabular-nums;
-    color: #bbb;
-    pointer-events: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.progress.gone {
+    opacity: 0;
 }
 
 header {
-    margin-top: 4rem;
-    margin-bottom: 4rem;
+    margin-top: var(--spacer-medium);
+    margin-bottom: var(--spacer-medium);
 }
 
 article {
-    margin-bottom: 4rem;
+    margin-bottom: var(--spacer-medium);
 }
 
 h1,
@@ -66,22 +87,22 @@ h1:first-child {
 }
 
 h2 {
-    margin-top: 12vh;
+    margin-top: var(--spacer-large);
 }
 
 .section-heading {
-    margin-top: 2rem;
+    margin-top: var(--spacer-medium);
 }
 
-h2:first-of-type {
-    margin-top: 4rem;
+article h2:first-of-type {
+    margin-top: var(--spacer-regular);
 }
 
 h3,
 h4,
 h5,
 h6 {
-    margin-top: 8vh;
+    margin-top: var(--spacer-medium);
 }
 
 p {
@@ -111,4 +132,27 @@ time {
 
 time {
     font-variant-numeric: tabular-nums;
+}
+
+hr {
+    border-top: 1px solid var(--border);
+    background: transparent;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    margin: 5vh 0;
+}
+
+blockquote {
+    margin: 4vh 0;
+    display: block;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: 2vh;
+    font-style: italic;
+    border-radius: 8px;
+
+    & p {
+        margin: 0;
+    }
 }

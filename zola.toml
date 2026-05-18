@@ -1,2 +1,3 @@
 base_url = "https://www.poemgreen.net"
 title = "绿松石"
+generate_feeds = true

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
+    <title>{{ config.title }}</title>
+    <link href="{{ config.base_url | safe }}" rel="alternate" type="text/html"/>
+    <link href="{{ feed_url | safe }}" rel="self" type="application/atom+xml"/>
+    <updated>{{ now() | date(format="%Y-%m-%dT%H:%M:%SZ") }}</updated>
+    <icon>{{ config.base_url | safe }}/favicon.svg</icon>
+    <id>{{ config.base_url | safe }}</id>
+    {% for page in pages %}
+    {% if "rolling" not in page.path %}
+    <entry>
+        <title>{{ page.title }}</title>
+        <link href="{{ page.permalink | safe }}" rel="alternate" type="text/html"/>
+        <published>{{ page.date | date(format="%Y-%m-%dT%H:%M:%SZ") }}</published>
+        <updated>{{ page.date | date(format="%Y-%m-%dT%H:%M:%SZ") }}</updated>
+        <id>{{ page.permalink | safe }}</id>
+        <content type="html">{{ page.content }}</content>
+    </entry>
+    {% endif %}
+    {% endfor %}
+</feed>
