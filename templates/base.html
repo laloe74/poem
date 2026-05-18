@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if page.title %}{{ page.title }} — {% if page.authors %}{{ page.authors | first }}{% endif %}{% else %}{{ config.title }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }} — {% if page.authors %}{{ page.authors | first }}{% endif %}{% else %}{{
+        config.title }}{% endif %}</title>
     <link rel="icon" type="image/svg+xml" href="{{ get_url(path='favicon.svg') }}">
     <link rel="apple-touch-icon" href="{{ get_url(path='favicon.svg') }}">
     <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
@@ -20,7 +21,7 @@
     </main>
     {% if page.title %}
     <script>
-        let p=document.querySelector('.progress'),u=()=>{let h=document.documentElement,d=h.scrollHeight-h.clientHeight;p.textContent=p.classList.contains('hidden')?'%':d?Math.max(0,Math.round(h.scrollTop/d*100))+'%':'0%'};p.onclick=()=>{p.classList.toggle('hidden');u()};onscroll=u
+        let p = document.querySelector('.progress'), v = () => {let h = document.documentElement, d = h.scrollHeight - h.clientHeight; return d ? Math.max(0, Math.round(h.scrollTop / d * 100)) + '%' : '0%'}; p.onclick = () => {let c = p.classList; c.contains('gone') ? (p.className = 'progress hidden', p.textContent = '%') : c.contains('hidden') ? (p.className = 'progress', p.textContent = v()) : (p.className = 'progress gone', p.textContent = '')}; onscroll = () => {if (!p.classList.contains('gone')) p.textContent = p.classList.contains('hidden') ? '%' : v()}
     </script>
     {% endif %}
 </body>
