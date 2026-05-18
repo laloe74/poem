@@ -1,0 +1,114 @@
+:root {
+    --text-primary: rgba(0, 0, 0, 0.9);
+    --text-secondary: rgba(0, 0, 0, 0.6);
+    --bg-primary: rgba(255, 255, 255, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: rgba(255, 255, 255, 0.9);
+        --text-secondary: rgba(255, 255, 255, 0.6);
+        --bg-primary: rgba(0, 0, 0, 1);
+    }
+}
+
+* {
+    font-size: 14px;
+    line-height: 1.6em;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:
+        -apple-system, BlinkMacSystemFont, "avenir next", avenir, helvetica,
+        "helvetica neue", ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+    padding: 2rem;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    -webkit-font-smoothing: antialiased;
+    text-autospace: normal;
+}
+
+main {
+    max-width: 70ch;
+    margin-bottom: 4rem;
+}
+
+.progress {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-variant-numeric: tabular-nums;
+    color: #bbb;
+    pointer-events: none;
+}
+
+header {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+article {
+    margin-bottom: 4rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-primary);
+}
+
+h1:first-child {
+    margin: 0;
+}
+
+h2 {
+    margin-top: 12vh;
+}
+
+.section-heading {
+    margin-top: 2rem;
+}
+
+h2:first-of-type {
+    margin-top: 4rem;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 8vh;
+}
+
+p {
+    margin-bottom: 32px;
+}
+
+a,
+a:visited {
+    color: var(--text-primary);
+}
+
+.list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.list li {
+    margin-bottom: 0.5rem;
+}
+
+.meta,
+.meta span,
+time {
+    color: #777;
+}
+
+time {
+    font-variant-numeric: tabular-nums;
+}

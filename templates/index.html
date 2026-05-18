@@ -1,35 +1,29 @@
 {% extends "base.html" %}
 
-{% block title %}{{ config.title }}{% endblock title %}
-
-{% block content %}
-{% set section = get_section(path="author/_index.md") %}
-<ul>
+{% block main %}
+<ul class="list">
     {% for page in section.pages %}
     <li>
-        <time>{{ page.date | date(format="%Y/%m/%d") }}</time>
         <a href="{{ page.permalink }}">{{ page.title }}</a>
+        <div class="meta">
+            <time>{{ page.date | date(format="%Y·%m·%d") }}</time>
+            {% if page.authors %}<span> — {{ page.authors | first }}</span>{% endif %}
+        </div>
     </li>
     {% endfor %}
 </ul>
 
-<p>---</p>
-
-{% set sectionR = get_section(path="rolling/_index.md") %}
-<ul>
-    {% for page in sectionR.pages %}
+{% set rolling = get_section(path="rolling/_index.md") %}
+<h2 class="section-heading">滚动更新</h2>
+<ul class="list">
+    {% for page in rolling.pages %}
     <li>
-        <time>{{ page.date | date(format="%Y/%m/%d") }}</time>
         <a href="{{ page.permalink }}">{{ page.title }}</a>
+        <div class="meta">
+            <time>{{ page.date | date(format="%Y·%m·%d") }}</time>
+            {% if page.authors %}<span> — {{ page.authors | first }}</span>{% endif %}
+        </div>
     </li>
     {% endfor %}
 </ul>
-{% endblock content %}
-
-{% block footer %}
-{% set index_section = get_section(path="_index.md") %}
-<footer>
-    <hr>
-    {{ index_section.content | safe }}
-</footer>
-{% endblock footer %}
+{% endblock main %}

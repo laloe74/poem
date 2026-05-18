@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page.title }}{% endblock title %}
-
-{% block content %}
+{% block main %}
 <article>
     {{ page.content | safe }}
 </article>
-{% endblock content %}
+{% endblock main %}

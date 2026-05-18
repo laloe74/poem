@@ -1,49 +1,33 @@
 <!DOCTYPE html>
-<html lang="{{ config.default_language }}">
+<html lang="zh-CN">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="{{ config.author }}">
-        <meta name="description" content="{{ config.description }}">
-        <title>{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}</title>
-        <link rel="me" href="mailto:{{ config.extra.email }}">
-        <link rel="blog" href="{{ config.extra.blog }}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path='img/favicon-32x32.png') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ get_url(path='img/favicon-16x16.png') }}">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ get_url(path='img/android-chrome-192x192.png') }}">
-        <link rel="icon" type="image/png" sizes="512x512" href="{{ get_url(path='img/android-chrome-512x512.png') }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ get_url(path='img/apple-touch-icon.png') }}">
-        <link rel="shortcut icon" href="{{ get_url(path='img/favicon.ico') }}">
-        <link rel="stylesheet" href="{{ get_url(path='style.css', cachebust=true) }}">
-        <link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path='/author/atom.xml') }}">
-        <link rel="preconnect" href="https://fonts.googleapis.cn">
-        <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
-        <link href="https://fonts.googleapis.cn/css2?family=Chivo:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} — {% if page.authors %}{{ page.authors | first }}{% endif %}{% else %}{{ config.title }}{% endif %}</title>
+    <link rel="icon" type="image/svg+xml" href="{{ get_url(path='favicon.svg') }}">
+    <link rel="apple-touch-icon" href="{{ get_url(path='favicon.svg') }}">
+    <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
+</head>
 
-    <body class="home">
+<body>
+    {% if page.title %}<span class="progress">0%</span>{% endif %}
+    <main>
         <header>
-            {% if current_path is defined and current_path == "/" %}
-                <h1><a href="/">{{ config.title }}</a></h1>
-            {% else %}
-                <h1><a href="/">{{ config.title }}</a></h1> /
-                <h1>
-                    <a href="{{ current_url | default(value="#") }}">
-                        {% if page.title %}
-                            {{ page.title }}
-                        {% elif section.title %}
-                            {{ section.title }}
-                        {% endif %}
-                    </a>
-                </h1>
-            {% endif %}
+            <h1><a href="/">{% if section.title %}{{ section.title }}{% else %}{{ page.title }}{% endif %}</a></h1>
         </header>
+        {% block main %} {% endblock main %}
+    </main>
+    {% if page.title %}
+    <script>
+        const p = document.querySelector('.progress');
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement;
+            const total = h.scrollHeight - h.clientHeight;
+            p.textContent = total ? Math.max(0, Math.round(h.scrollTop / total * 100)) + '%' : '0%';
+        });
+    </script>
+    {% endif %}
+</body>
 
-        <main>
-            {% block content %} {% endblock content %}
-        </main>
-
-        {% block footer %} {% endblock footer %}
-    </body>
 </html>
