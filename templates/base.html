@@ -21,7 +21,26 @@
     </main>
     {% if page.title %}
     <script>
-        let p = document.querySelector('.progress'), v = () => {let h = document.documentElement, d = h.scrollHeight - h.clientHeight; return d ? Math.max(0, Math.round(h.scrollTop / d * 100)) + '%' : '0%'}; p.onclick = () => {let c = p.classList; c.contains('gone') ? (p.className = 'progress hidden', p.textContent = '%') : c.contains('hidden') ? (p.className = 'progress', p.textContent = v()) : (p.className = 'progress gone', p.textContent = '')}; onscroll = () => {if (!p.classList.contains('gone')) p.textContent = p.classList.contains('hidden') ? '%' : v()}
+        let p = document.querySelector('.progress');
+
+        let v = () => {
+            let h = document.documentElement;
+            let d = h.scrollHeight - h.clientHeight;
+            return d
+                ? Math.max(0, Math.round(h.scrollTop / d * 100)) + '%'
+                : '0%';
+        };
+
+        p.onclick = () => {
+            p.classList.toggle('hidden');
+            p.textContent = p.classList.contains('hidden') ? '%' : v();
+        };
+
+        onscroll = () => {
+            if (!p.classList.contains('hidden')) {
+                p.textContent = v();
+            }
+        };
     </script>
     {% endif %}
 </body>
