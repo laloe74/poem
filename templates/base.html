@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="authors" content="{% if page.authors %}{{ page.authors | first }}{% else %}童茗智 - tong.mingzhi43@gmail.com{% endif %}">
     <title>{% if page.title %}{{ page.title }} — {% if page.authors %}{{ page.authors | first }}{% endif %}{% else %}{{
         config.title }}{% endif %}</title>
     <link rel="icon" type="image/svg+xml" href="{{ get_url(path='favicon.svg') }}">
