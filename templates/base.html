@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="authors" content="{% if page.authors %}{{ page.authors | first }}{% else %}童茗智 - tong.mingzhi43@gmail.com{% endif %}">
-    <title>{% if page.title %}{{ page.title }} — {% if page.authors %}{{ page.authors | first }}{% endif %}{% else %}{{
+    <meta name="authors" content="{% if page is defined and page.authors %}{{ page.authors | first }}{% else %}童茗智 - tong.mingzhi43@gmail.com{% endif %}">
+    <title>{% if page is defined and page.title %}{{ page.title }} — {% if page.authors %}{{ page.authors | first }}{% endif %}{% else %}{{
         config.title }}{% endif %}</title>
     <link rel="icon" type="image/svg+xml" href="{{ get_url(path='favicon.svg') }}">
     <link rel="apple-touch-icon" href="{{ get_url(path='favicon.svg') }}">
@@ -13,14 +13,14 @@
 </head>
 
 <body>
-    {% if page.title %}<span class="progress hidden">%</span>{% endif %}
+    {% if page is defined and page.title %}<span class="progress hidden">%</span>{% endif %}
     <main>
         <header>
-            <h1><a href="/">{% if section.title %}{{ section.title }}{% else %}{{ page.title }}{% endif %}</a></h1>
+            <h1><a href="/">{% if section is defined %}{{ section.title }}{% elif page is defined %}{{ page.title }}{% else %}{{ config.title }}{% endif %}</a></h1>
         </header>
         {% block main %} {% endblock main %}
     </main>
-    {% if page.title %}
+    {% if page is defined and page.title %}
     <script>
         let p = document.querySelector('.progress');
 
